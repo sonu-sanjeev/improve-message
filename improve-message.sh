@@ -62,9 +62,9 @@ afplay /System/Library/Sounds/Tink.aiff &
 word_count=$(echo "$clipboard" | wc -w | tr -d ' ')
 
 if [ "$word_count" -lt "$WORD_THRESHOLD" ]; then
-  system_prompt="Fix grammar, spelling, and punctuation. Keep contractions, slang, and informal language as-is. Do not add filler phrases or transitions. Do not rephrase things that are already clear. Return only the corrected text."
+  system_prompt="Fix grammar, spelling, and punctuation. You can rephrase slightly for clarity, but keep the same tone and level of formality. Keep contractions and informal language. Do not add filler phrases or pleasantries. Return only the corrected text."
 else
-  system_prompt="Improve this message for clarity and flow. Fix grammar and spelling. Keep the author's word choices, contractions, and level of formality. Do not add filler phrases, pleasantries, or transitions that weren't there. Do not swap casual words for formal synonyms. Prefer fewer changes over more. Return only the improved text."
+  system_prompt="Improve this message for clarity and flow. Fix grammar and spelling. Tighten wordy sentences and remove redundancy. You can rephrase and restructure where it helps, but keep the author's tone, contractions, and level of formality. Do not add filler phrases, pleasantries, or corporate-sounding language. Return only the improved text."
 fi
 
 # --- Build JSON payload ---
