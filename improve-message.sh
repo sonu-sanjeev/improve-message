@@ -15,24 +15,33 @@
 
 # ─── Setup Instructions ───────────────────────────────────────────────
 # 1. Get a free Gemini API key from https://aistudio.google.com/apikey
-# 2. Add to your shell config (~/.zshrc):
-#      export GEMINI_API_KEY="your-key-here"
-# 3. In Raycast: Settings → Extensions → Script Commands → Add Directories
+# 2. In Raycast: Settings → Extensions → Script Commands → Add Directories
 #    → select the folder containing this script
-# 4. Assign hotkey Cmd+Shift+I in Raycast command settings
+# 3. Assign hotkey Cmd+Shift+I in Raycast command settings
+# 4. On first run, a dialog will prompt you for your API key (stored in macOS Keychain)
 # ──────────────────────────────────────────────────────────────────────
+
+KEYCHAIN_SERVICE="improve-message"
+KEYCHAIN_ACCOUNT="gemini-api-key"
 
 # Messages with fewer words than this get a light polish; others get a full rewrite
 WORD_THRESHOLD=50
 
-# --- Load API key from shell config (Raycast runs non-interactive shells) ---
-GEMINI_API_KEY=$(grep '^export GEMINI_API_KEY=' "$HOME/.zshrc" | cut -d'"' -f2)
+# --- Load API key from macOS Keychain ---
+GEMINI_API_KEY=$(security find-generic-password -s "$KEYCHAIN_SERVICE" -a "$KEYCHAIN_ACCOUNT" -w 2>/dev/null)
 
-# --- Validate API key ---
+# --- Prompt on first run ---
 if [ -z "$GEMINI_API_KEY" ]; then
-  afplay /System/Library/Sounds/Basso.aiff &
-  echo "Set GEMINI_API_KEY in your shell config (~/.zshrc)"
-  exit 1
+  GEMINI_API_KEY=$(osascript -e 'text returned of (display dialog "Enter your Gemini API key:" & return & return & "Get one free at aistudio.google.com/apikey" default answer "" with title "Improve Message Setup" with hidden answer)')
+
+  if [ -z "$GEMINI_API_KEY" ]; then
+    afplay /System/Library/Sounds/Basso.aiff &
+    echo "No API key provided"
+    exit 1
+  fi
+
+  security add-generic-password -s "$KEYCHAIN_SERVICE" -a "$KEYCHAIN_ACCOUNT" -w "$GEMINI_API_KEY"
+  echo "API key saved to Keychain ✓"
 fi
 
 # --- Copy selected text to clipboard ---
