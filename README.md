@@ -4,6 +4,11 @@ A Raycast script command that instantly improves any text you've selected — fi
 
 Select text anywhere, hit a hotkey, and the improved version replaces it in place.
 
+https://github.com/user-attachments/assets/75f37749-0e4e-44a2-971f-877a2ee8c6d5
+
+
+
+
 ## Setup
 
 ### 1. Get a free Gemini API key
