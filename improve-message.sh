@@ -25,7 +25,7 @@ KEYCHAIN_SERVICE="improve-message"
 KEYCHAIN_ACCOUNT="gemini-api-key"
 
 # Messages with fewer words than this get a light polish; others get a full rewrite
-WORD_THRESHOLD=50
+WORD_THRESHOLD=100
 
 # --- Load API key from macOS Keychain ---
 GEMINI_API_KEY=$(security find-generic-password -s "$KEYCHAIN_SERVICE" -a "$KEYCHAIN_ACCOUNT" -w 2>/dev/null)
