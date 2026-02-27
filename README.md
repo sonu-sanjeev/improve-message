@@ -49,6 +49,9 @@ The first time you use it, a dialog will ask for your API key. Paste it in and y
 3. A toast popup shows the definition
 4. Your selected text stays untouched
 
+<video src="https://github.com/user-attachments/assets/c1482948-740c-4df6-8bd6-d90af3d44f1c width=300 height=180> </video>
+
+
 ## Managing your API key
 
 Your API key is stored in the macOS Keychain. You can manage it from the terminal:
