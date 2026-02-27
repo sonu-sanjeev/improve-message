@@ -1,8 +1,9 @@
-# Improve Message
+# Improve Message & Define Word
 
-A Raycast script command that instantly improves any text you've selected — fixing grammar, spelling, and clarity using Google Gemini AI.
+Raycast script commands powered by Google Gemini AI:
 
-Select text anywhere, hit a hotkey, and the improved version replaces it in place.
+- **Improve Message** — select text, hit a hotkey, and the improved version replaces it in place
+- **Define Word** — select a word, hit a hotkey, and see its definition as a toast popup
 
 
 ## Setup
@@ -17,10 +18,11 @@ Go to [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and creat
 - Go to **Extensions** → **Script Commands**
 - Click **Add Directories** and select the folder containing this script
 
-### 3. Assign a hotkey
+### 3. Assign hotkeys
 
 - Find "Improve Message" in Raycast Settings → Extensions
 - Click on it and set a hotkey (recommended: **Cmd+Shift+I**)
+- Find "Define Word" and set a hotkey (recommended: **Cmd+Shift+D**)
 
 ### 4. First run
 
@@ -39,6 +41,13 @@ The first time you use it, a dialog will ask for your API key. Paste it in and y
 
 - **Short messages** (under 50 words): light fix for grammar, spelling, and punctuation while keeping your tone
 - **Longer messages** (50+ words): full rewrite for clarity, professionalism, and flow
+
+## Define Word
+
+1. Select a word or short phrase (up to 10 words) in any app
+2. Press your hotkey (Cmd+Shift+D)
+3. A toast popup shows the definition
+4. Your selected text stays untouched
 
 ## Managing your API key
 
